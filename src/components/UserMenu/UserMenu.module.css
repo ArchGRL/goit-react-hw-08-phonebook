@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #f8fafb;
+}
+
+.username {
+  font-weight: 700;
+  margin: 12px;
+}
+
+.userButton {
+  color: #f8fafb;
+  border: none;
+  background-color: #7d7d3f;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.userButton:hover {
+  color: #213804;
+}

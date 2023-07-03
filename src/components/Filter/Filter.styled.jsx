@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
-export const FilterInput = styled.input`
-width: 200px;
-margin-top: 5px;
-`
+export const FilterWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+`;

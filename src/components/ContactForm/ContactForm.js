@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/operations';
 import { Form, Input, Label, Button } from './ContactForm.styled';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/contacts/selectors';
 
-export default function ContactForm() {
+export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const contacts = useSelector(selectContacts);
@@ -44,7 +44,7 @@ export default function ContactForm() {
             name="name"
             value={name}
             onChange={handleInputNameChange}
-            pattern="^[a-zA-Zа-яА-Я]+((['\-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            pattern="^[a-zA-Zа-яА-Я]+([\-' ][a-zA-Zа-яА-Я]+)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
@@ -68,4 +68,4 @@ export default function ContactForm() {
       </Form>
     </div>
   );
-}
+};

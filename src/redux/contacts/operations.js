@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Notify } from 'notiflix';
 import axios from 'axios';
-
-axios.defaults.baseURL = 'https://649fd83ced3c41bdd7a6c1f2.mockapi.io';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
@@ -10,6 +9,7 @@ export const fetchContacts = createAsyncThunk(
       const response = await axios.get('/contacts');
       return response.data;
     } catch (e) {
+      Notify.failure(`${e.message}`);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -22,6 +22,7 @@ export const addContact = createAsyncThunk(
       const response = await axios.post('/contacts', newContact);
       return response.data;
     } catch (e) {
+      Notify.failure(`${e.message}`);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -32,8 +33,12 @@ export const deleteContact = createAsyncThunk(
   async (contactId, thunkAPI) => {
     try {
       const response = await axios.delete(`/contacts/${contactId}`);
+      Notify.success(
+        `"${response.data.name}" phone number has been successfully deleted from the contacts book.`
+      );
       return response.data;
     } catch (e) {
+      Notify.failure(`${e.message}`);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
