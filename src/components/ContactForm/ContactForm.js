@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { addContact } from 'redux/contacts/operations';
 import { Form, Input, Label, Button } from './ContactForm.styled';
 import { selectContacts } from 'redux/contacts/selectors';
+import { Notify } from 'notiflix';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -27,7 +28,8 @@ export const ContactForm = () => {
     );
 
     existingContact
-      ? alert(`${existingContact.name} is already in the phone book.`)
+      ? 
+      Notify.failure(`${existingContact.name} is already in the phone book.`)
       : dispatch(addContact(newContact));
     setName('');
     setNumber('');
